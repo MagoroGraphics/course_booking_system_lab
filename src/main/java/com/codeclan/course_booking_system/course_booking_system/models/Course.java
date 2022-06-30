@@ -38,6 +38,10 @@ public class Course {
     public Course() {
     }
 
+    public void addBookings(Booking booking){
+        this.bookings.add(booking);
+    }
+
     //region Getters and Setters
 
 
