@@ -37,4 +37,21 @@ public class CustomerController {
         return new ResponseEntity<>(customerRepository.findByBookings_Course_Id(course_id), HttpStatus.OK);
     }
 
+    @GetMapping(value="/customers/town")
+    public ResponseEntity<List<Customer>> findCustomersByCourseTown(
+            @RequestParam(name = "name") String course_town
+    )
+    {
+        return new ResponseEntity<>(customerRepository.findByBookings_Course_TownIgnoreCase(course_town), HttpStatus.OK);
+    }
+
+    //we can query this on the browser at http://localhost:8080/customers/AgeAndCourseTown?age=28&&name=Edinburgh
+    @GetMapping(value="/customers/AgeAndCourseTown")
+    public ResponseEntity<List<Customer>> findCustomersByAgeAndCourseTown(
+            @RequestParam(name = "age") int age, @RequestParam(name = "name") String course_town
+    )
+    {
+        return new ResponseEntity<>(customerRepository.findByAgeAndBookings_Course_TownIgnoreCase(age, course_town), HttpStatus.OK);
+    }
+
 }
