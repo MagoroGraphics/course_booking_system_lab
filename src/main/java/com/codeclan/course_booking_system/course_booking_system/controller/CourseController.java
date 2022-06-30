@@ -37,4 +37,12 @@ public class CourseController {
         return new ResponseEntity<>(courseRepository.findByRating(rating), HttpStatus.OK);
     }
 
+    @GetMapping(value="/courses/customer")
+    public ResponseEntity<List<Course>> findCoursesByCustomer(
+            @RequestParam(name = "id") Long customer_id
+    )
+    {
+        return new ResponseEntity<>(courseRepository.findByBookings_Customer_Id(customer_id), HttpStatus.OK);
+    }
+
 }
