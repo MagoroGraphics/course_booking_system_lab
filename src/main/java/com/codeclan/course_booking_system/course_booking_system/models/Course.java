@@ -3,6 +3,7 @@ package com.codeclan.course_booking_system.course_booking_system.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,7 +31,9 @@ public class Course {
         this.name = name;
         this.town = town;
         this.rating = rating;
+        this.bookings = new ArrayList<Booking>();
     }
+
 
     public Course() {
     }

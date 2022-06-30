@@ -20,9 +20,30 @@ public class Booking {
     @JsonIgnoreProperties({"bookings"})
     private Course course;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    @JsonIgnoreProperties({"bookings"})
+    private Customer customer;
+
+    public Booking(String date, Course course, Customer customer) {
+        this.date = date;
+        this.course = course;
+        this.customer = customer;
+    }
+
+    public Booking() {
+    }
 
     //region Getters and Setters
 
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public String getDate() {
         return date;
